@@ -1,0 +1,38 @@
+* {
+	word-wrap: break-word;
+}
+
+body {
+	padding-top: 70px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.spongebob {
+	text-transform: capitalize;
+}
+
+.navbar-fixed-bottom .btn {
+	width: 100%;
+}
+
+.navbar-fixed-bottom .table {
+	margin-bottom: 0;
+}
+
+.navbar-fixed-bottom .table,
+.navbar-fixed-bottom td {
+	border: none !important;
+}
+
+.hapus,
+.tombol {
+	cursor: pointer;
+	user-select: none;
+}
+
+.sembunyi {
+	display: none;
+}

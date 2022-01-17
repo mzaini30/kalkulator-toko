@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kalkulator Toko</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/zen/style.css">
+	<style type="text/css">
+		.kiri {
+			text-align: left !important;
+		}
+
+		body {
+			padding-bottom: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header"><div class="navbar-brand">Kalkulator Toko</div></div>
+		</div>
+	</div>
+	<div class="container isi">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<td>Harga</td>
+					<td>Banyak</td>
+					<td>Total</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody class="isi-tabel"></tbody>
+		</table>
+
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>
+								<div class="btn kiri total-semua">0</div>
+							</td>
+							<td>
+								<div class="btn btn-default tambah">Tambah</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src='vendor/jquery/jquery.min.js'></script>
+	<script type="text/javascript" src='vendor/zen/app.js'></script>
+	<script type="text/javascript">
+		$('.tambah').click(function(){
+			$('.isi-tabel').append(`
+				<tr>
+				    <td><input type="tel" class="form-control harga"></td>
+				    <td><input type="tel" name="" id="" class="form-control banyak" placeholder='1'></td>
+				    <td> 
+				    	<span class="total pull-right sembunyi">0</span>
+				    	<span class="total-tampil pull-right">0</span>
+				    </td>
+				    <td><div class="btn btn-default hapus">&times;</div></td>
+				</tr>`)
+		})
+		
+		cari_total = function(){
+		    total_semua = []
+		    total_semua.push(0)
+		    $(".total").length == 0 ? total_semua = [0] : ""
+		    $(".total").each(function(){
+		    	total_semua.push($(this).html())
+		    })
+		    hasil_semua = 0
+		    for (n in total_semua){
+		    	hasil_semua += Number(total_semua[n])
+		    }
+		    $('.total-semua').html(hasil_semua.toLocaleString("id"))
+		    // $(".total-semua").html(total_semua.reduce((a, b) => Number(a) + Number(b)).toLocaleString("id"))
+		}
+		
+		$(document).on("keyup", ".form-control", function(){
+			harga = $(this).parent().parent().find(".harga").val()
+		    banyak = $(this).parent().parent().find(".banyak").val()
+		    banyak == '' ? banyak = 1 : ''
+		    total = harga * banyak
+		    $(this).parent().parent().find(".total").html(total)
+		    $(this).parent().parent().find(".total-tampil").html(total.toLocaleString("id"))
+		    
+		    cari_total()
+		})
+		
+		$(document).on("click", ".hapus", function(){
+			// $(this).parent().parent().find(".total").html(0)
+			$(this).parent().parent().find('td').remove()
+			  
+			cari_total()
+		})
+	</script>
+</body>
+</html>
