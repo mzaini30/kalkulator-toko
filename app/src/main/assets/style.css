@@ -1,0 +1,56 @@
+:root {
+  --green-200: #bbf7d0;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-900: #14532d;
+  --violet-500: #8b5cf6;
+  --violet-900: #4c1d95;
+}
+* {
+  word-wrap: break-word;
+  font-family: sans-serif !important;
+  box-sizing: border-box;
+}
+.container-harga {
+  margin: 0 0 60px 0;
+}
+.header {
+  background-color: var(--green-600);
+  color: white;
+  padding: 15px;
+  font-size: 15px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  border-bottom: 3px solid var(--green-900);
+}
+input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 0;
+  border: 1px solid var(--green-200);
+  color: var(--green-900);
+}
+.duit {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+input:focus {
+  outline: none;
+}
+
+.wadah-total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--green-600);
+  color: white;
+  padding: 15px;
+}
+.nama-barang {
+  padding-top: 10px;
+  border-top: 1px solid var(--green-500);
+  color: black;
+  text-align: center;
+}
