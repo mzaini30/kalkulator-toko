@@ -54,3 +54,6 @@ input:focus {
   color: black;
   text-align: center;
 }
+[v-cloak]{
+  display: none;
+}

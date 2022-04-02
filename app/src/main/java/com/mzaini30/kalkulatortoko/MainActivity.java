@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         // replace this with your own link/web app address
         if (savedInstanceState == null) {
-            webview.loadUrl("file:///android_asset/index.html");
+            webview.loadUrl("file:///android_asset/build/index.html");
         }
     }
 

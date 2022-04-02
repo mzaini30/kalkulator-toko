@@ -1,0 +1,7 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Document</title><link rel=stylesheet href=reset.css><link rel=stylesheet href=style.css><div class=app v-cloak @vue:mounted=init><div class=header>Kalkulator Toko</div><div class=container-harga><div class=wadah-harga v-for="(x, n) in harga"><input placeholder="nama barang" @keyup=simpan v-model=x.nama_barang class=nama-barang><div class=duit><input type=tel @keyup=cek(n) placeholder=harga v-model=x.harga>
+<input type=tel placeholder=1 @keyup=simpan v-model=x.banyak>
+<input type=tel placeholder=total readonly v-model='(x.harga * (x.banyak ? x.banyak : 1)).toLocaleString("id")'></div></div></div><div class=wadah-total><div class=total>{{ (harga.map(x => {
+return x.harga * (x.banyak ? x.banyak : 1)
+}).reduce((a, b) => a + b)).toLocaleString("id") }}</div></div></div><script src=vue.min.js></script>
+<script src=idb-keyval.min.js></script>
+<script>const{set,get}=idbKeyval,{createApp}=PetiteVue;function json(e){return JSON.parse(JSON.stringify(e))}createApp({harga:[{nama_barang:'',harga:'',banyak:''}],async init(){const e=await get("data");e&&(this.harga=e)},simpan(){set("data",json(this.harga))},cek(e){this.simpan();const t=+e+1;t==this.harga.length&&(this.harga=[...this.harga,{nama_barang:'',harga:'',banyak:''}])}}).mount(".app")</script>
